@@ -1,0 +1,66 @@
+.tech-title.tech-identity {
+  grid-template-columns: minmax(0, 1.25fr) minmax(280px, .75fr);
+  align-items: end;
+  gap: clamp(48px, 7vw, 120px);
+}
+
+.tech-title.tech-identity .tech-acronym {
+  margin: 0;
+  color: var(--orange);
+  font-size: clamp(7rem, 14vw, 14rem);
+  font-weight: 900;
+  line-height: .72;
+  letter-spacing: -.09em;
+}
+
+.tech-title.tech-identity .tech-fullname {
+  margin: clamp(30px, 4vw, 54px) 0 0;
+  color: var(--ink);
+  font-size: clamp(1.5rem, 2.7vw, 3.4rem);
+  font-weight: 850;
+  line-height: 1.08;
+  letter-spacing: -.045em;
+  word-break: keep-all;
+}
+
+.tech-title.tech-identity h2 {
+  margin: 24px 0 0;
+  color: #666;
+  font-size: clamp(1.35rem, 2vw, 2rem);
+  font-weight: 750;
+  line-height: 1.35;
+  letter-spacing: -.035em;
+}
+
+.tech-title.tech-identity > p {
+  max-width: 520px;
+  padding-bottom: 4px;
+  color: #555;
+  font-size: clamp(1rem, 1.35vw, 1.25rem);
+  font-weight: 650;
+  line-height: 1.75;
+  word-break: keep-all;
+}
+
+@media (max-width: 1100px) {
+  .tech-title.tech-identity {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+}
+
+@media (max-width: 760px) {
+  .tech-title.tech-identity .tech-acronym {
+    font-size: clamp(6.2rem, 31vw, 9.5rem);
+  }
+
+  .tech-title.tech-identity .tech-fullname {
+    margin-top: 28px;
+    font-size: clamp(1.35rem, 7.2vw, 2rem);
+  }
+
+  .tech-title.tech-identity h2 {
+    margin-top: 18px;
+    font-size: 1.2rem;
+  }
+}

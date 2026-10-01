@@ -1,0 +1,92 @@
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-motion {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  right: 0;
+  width: min(64vw, 1080px);
+  height: 100%;
+  opacity: .24;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.12) 20%, #000 55%);
+  mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.12) 20%, #000 55%);
+}
+
+.hero-emblem {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 105%;
+  height: 105%;
+  object-fit: cover;
+  object-position: center;
+  mix-blend-mode: multiply;
+  transform: translate(-50%, -50%);
+  filter: contrast(1.05);
+}
+
+@media (max-width: 1100px) {
+  .hero-motion {
+    right: -8%;
+    width: 76vw;
+    opacity: .19;
+  }
+}
+
+@media (max-width: 760px) {
+  .hero-motion {
+    top: 8%;
+    right: -42%;
+    width: 128vw;
+    height: 70%;
+    opacity: .14;
+  }
+
+  .hero-emblem {
+    width: 116%;
+    height: 116%;
+  }
+}
+
+/* Live interaction telemetry — an analytical field, not a decorative orbit. */
+.hero-motion {
+  top: 3%;
+  right: -2%;
+  width: min(58vw, 960px);
+  height: 94%;
+  opacity: .76;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.38) 24%, #000 58%);
+  mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.38) 24%, #000 58%);
+}
+
+.interaction-field{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.field-grid path{fill:none;stroke:#deded8;stroke-width:1}
+.field-paths path{fill:none;stroke:#111;stroke-width:1.45;stroke-dasharray:7 9;opacity:.58;animation:signal-flow 14s linear infinite}
+.field-paths path:nth-child(2){animation-duration:18s;animation-direction:reverse}
+.field-paths path:nth-child(3){stroke:#ff5a1f;animation-duration:12s}
+.field-subjects circle{fill:#fff;stroke:#111;stroke-width:2}
+.field-subjects circle:nth-child(2),.field-subjects circle:nth-child(5){fill:#ff5a1f;stroke:#ff5a1f;animation:subject-pulse 3.2s ease-in-out infinite}
+.field-signals circle{fill:#111;animation:signal-move 9s ease-in-out infinite}
+.field-signals circle:nth-child(2){animation-delay:-3s}.field-signals circle:nth-child(3){fill:#ff5a1f;animation-delay:-6s}
+.field-readout{position:absolute;min-width:150px;padding:12px 14px;border:1px solid rgba(17,17,17,.36);background:rgba(255,255,255,.84);backdrop-filter:blur(8px)}
+.field-readout span,.field-readout strong{display:block}.field-readout span{font-size:11px;font-weight:800;letter-spacing:.08em}.field-readout strong{margin-top:3px;font-size:19px;font-weight:850}.field-readout--one{top:21%;right:14%;animation:readout-float 5s ease-in-out infinite}.field-readout--two{right:34%;bottom:18%;animation:readout-float 6s -2s ease-in-out infinite}.field-readout--three{top:47%;right:4%;animation:readout-float 5.5s -3s ease-in-out infinite}
+.hero.motion-paused .field-paths path,.hero.motion-paused .field-subjects circle,.hero.motion-paused .field-signals circle,.hero.motion-paused .field-readout{animation-play-state:paused}
+
+@keyframes signal-flow{to{stroke-dashoffset:-160}}
+@keyframes subject-pulse{50%{r:31;opacity:.72}}
+@keyframes signal-move{0%,100%{transform:translate(0,0)}50%{transform:translate(120px,-72px)}}
+@keyframes readout-float{50%{transform:translateY(-10px)}}
+
+@media (max-width:1100px){.hero-motion{right:-14%;width:76vw;opacity:.58}.field-readout--three{display:none}}
+@media (max-width:760px){.hero-motion{top:7%;right:-58%;width:142vw;height:64%;opacity:.38}.field-readout{display:none}}
+@media (prefers-reduced-motion:reduce){.field-paths path,.field-subjects circle,.field-signals circle,.field-readout{animation:none!important}}
